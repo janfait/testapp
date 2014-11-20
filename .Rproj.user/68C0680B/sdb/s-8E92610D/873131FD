@@ -1,0 +1,16 @@
+{
+    "contents" : "\nrequire(RCurl)\nrequire(XML)\n\n#define the function\nget_url <- function(site) {\n  \n  html <- try(htmlParse(site))\n  \n  fail <- function(x) inherits(x, \"try-error\")\n  \n  if(!fail(html)) {\n    \n    xpath <- paste(\"//*[@class='product-container']/h2\",sep=\"\")\n    data <- xpathSApply(html,xpath,xmlValue)\n    \n    return(data)\n    \n  } else {\n    \n    return(print(\"Jejda.Chyba.Pokračujte na další strán\"))    \n  }\n  \n} \n\n#define the function\nwd <- function(type=0) {\n\n  if(type==1){\n    r<-sessionInfo(package=NULL)\n  }else{\n    r<-getwd()\n  }\n \n return(r)\n  \n} \n\n#define the function\nreadwrite <- function(dir=NULL,type=1) {\n  \n  if(is.null(dir)){\n    return(FALSE)\n  }\n  fail <- function(x) inherits(x, \"try-error\")\n  \n  d<- data.frame(a=c(1,2,3),b=c(3,5,6))\n  \n  if(type==1){\n    try(write.csv(d,dir),silent=T)\n    Sys.sleep(3)\n    csv<-try(read.csv(dir),silent=T)\n    if(fail(csv)){\n      a<-file.exists(dir)\n      b<- csv\n    }else{\n      a<-file.exists(dir)\n      b<-FALSE\n    }\n  }\n  if(type==2){\n    try(save(d,file=dir),silent=T)\n    Sys.sleep(3)\n    rda<-try(load(dir),silent=T)\n    if(fail(rda)){\n      a<-file.exists(dir)\n      b<-rda\n    }else{\n      a<-file.exists(dir)\n      b<-FALSE\n    }\n  }\n\n  r <- list(exists=a,data=b)\n  \n  return(r)\n  \n} \n\n",
+    "created" : 1416481716152.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3550380804",
+    "id" : "873131FD",
+    "lastKnownWriteTime" : 1416482676,
+    "path" : "P:/08_Inovace/R/opencpu/testapp/R/testapp.R",
+    "project_path" : "R/testapp.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

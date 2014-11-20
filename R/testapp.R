@@ -24,7 +24,7 @@ get_url <- function(site) {
 } 
 
 #define the function
-wd <- function(type) {
+wd <- function(type=0) {
 
   if(type==1){
     r<-sessionInfo(package=NULL)
@@ -35,3 +35,45 @@ wd <- function(type) {
  return(r)
   
 } 
+
+#define the function
+readwrite <- function(dir=NULL,type=1) {
+  
+  if(is.null(dir)){
+    return(FALSE)
+  }
+  fail <- function(x) inherits(x, "try-error")
+  
+  d<- data.frame(a=c(1,2,3),b=c(3,5,6))
+  
+  if(type==1){
+    try(write.csv(d,dir),silent=T)
+    Sys.sleep(3)
+    csv<-try(read.csv(dir),silent=T)
+    if(fail(csv)){
+      a<-file.exists(dir)
+      b<- csv
+    }else{
+      a<-file.exists(dir)
+      b<-FALSE
+    }
+  }
+  if(type==2){
+    try(save(d,file=dir),silent=T)
+    Sys.sleep(3)
+    rda<-try(load(dir),silent=T)
+    if(fail(rda)){
+      a<-file.exists(dir)
+      b<-rda
+    }else{
+      a<-file.exists(dir)
+      b<-FALSE
+    }
+  }
+
+  r <- list(exists=a,data=b)
+  
+  return(r)
+  
+} 
+
