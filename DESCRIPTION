@@ -1,0 +1,11 @@
+Package: testapp
+Type: Package
+Title: Test package for OPENCPU use at STEM/MARK
+Version: 1.0
+Date: 2014-07-11
+Author: Jan Fait
+Maintainer: <fait@stemmark.cz>
+Description: None
+Depends: methods, bitops, RCurl
+Imports: RCurl,bitops,methods,XML
+License: Private property muthafuckers

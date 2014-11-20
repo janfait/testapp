@@ -1,0 +1,17 @@
+{
+    "contents" : "sessionInfo(package = NULL)\nprint(sessionInfo(), locale = TRUE)\n",
+    "created" : 1416480935652.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1762057560",
+    "id" : "CE8D60CF",
+    "lastKnownWriteTime" : 1416480906,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
