@@ -77,3 +77,41 @@ readwrite <- function(dir=NULL,type=1) {
   
 } 
 
+
+
+#define the function
+readfile <- function(dir=NULL,type=1) {
+  
+  if(is.null(dir)){
+    return(FALSE)
+  }
+  fail <- function(x) inherits(x, "try-error")
+  
+  if(type==1){
+    csv<-try(read.csv(dir),silent=T)
+    if(!fail(csv)){
+      a<-file.exists(dir)
+      b<- csv
+    }else{
+      a<-file.exists(dir)
+      b<-FALSE
+    }
+  }
+  if(type==2){
+    Sys.sleep(1)
+    rda<-try(load(dir),silent=T)
+    if(!fail(rda)){
+      a<-file.exists(dir)
+      b<-rda
+    }else{
+      a<-file.exists(dir)
+      b<-FALSE
+    }
+  }
+  
+  r <- list(exists=a,data=b)
+  
+  return(r)
+  
+} 
+
