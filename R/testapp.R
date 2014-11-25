@@ -50,7 +50,7 @@ readwrite <- function(dir=NULL,type=1) {
     try(write.csv(d,dir),silent=T)
     Sys.sleep(3)
     csv<-try(read.csv(dir),silent=T)
-    if(fail(csv)){
+    if(!fail(csv)){
       a<-file.exists(dir)
       b<- csv
     }else{
@@ -62,7 +62,7 @@ readwrite <- function(dir=NULL,type=1) {
     try(save(d,file=dir),silent=T)
     Sys.sleep(3)
     rda<-try(load(dir),silent=T)
-    if(fail(rda)){
+    if(!fail(rda)){
       a<-file.exists(dir)
       b<-rda
     }else{
